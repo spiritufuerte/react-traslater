@@ -1,0 +1,20 @@
+.nav {
+    text-decoration: none;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+a{
+    font-weight: 600;
+    cursor: default;
+    padding: 5px;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.item a.active {
+    color: gold;
+}

@@ -1,0 +1,23 @@
+.header {
+    background-color: black;
+    color: #ffffff;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+button {
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    height: 30px;
+    width: 100%;
+    background-color: #008CBA;
+    color: #ffffff;
+    border: none;
+    text-align: center;
+}
