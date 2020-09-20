@@ -1,11 +1,11 @@
 import React from "react";
+import Form from "./Form/Form";
+import classes from '../Content/Content.module.css'
 
 const Content = () => {
     return (
-        <div>
-            <h2>ЗАМОВИТИ РЕДАГУВАННЯ</h2>
-            <p>Виправимо всі помилки, приберемо всі дурниці, перефразуємо невдалі місця, але сильно текст не
-                переписуватимемо. Зайвих виправлень не буде. Детальніше про редагування</p>
+        <div className={classes.content}>
+            <Form/>
         </div>
     )
 }
