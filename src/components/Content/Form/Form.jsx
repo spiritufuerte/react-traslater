@@ -74,11 +74,11 @@ const Form = () => {
                     <div className={classes.section_lang_item}>
                         <legend className={classes.section_lang_title}><b>Мова</b></legend>
                         <label><input type="radio" name="lang"
-                                      value="ukr" onChange={handleChangeLanguage} /> Українська</label>
+                                      value="ukr" onChange={handleChangeLanguage}/> Українська</label>
                         <label><input type="radio" name="lang"
-                                      value="rus" onChange={handleChangeLanguage} /> Російська</label>
+                                      value="rus" onChange={handleChangeLanguage}/> Російська</label>
                         <label><input type="radio" name="lang"
-                                      value="ang" onChange={handleChangeLanguage} /> Англійська</label>
+                                      value="ang" onChange={handleChangeLanguage}/> Англійська</label>
                     </div>
                 </section>
                 <section>
@@ -90,8 +90,10 @@ const Form = () => {
             <div>
                 <div className={classes.block_result_info}>
                     <div className={classes.block_info_text}>
-                        <div className={classes.price}>{price.toFixed(2)} грн</div>
-                        {deadline && <div className={classes.time}>Термін виконання: {deadline.format('DD.MM.YY [о] HH:mm')}</div>}
+                        <div className={classes.price}>{numChars ?  price.toFixed(2) : '0,00'} грн</div>
+                        {deadline &&
+                            numChars ?
+                            <div className={classes.time}>Термін виконання: {deadline.format('DD.MM.YY [о] HH:mm')}</div> : <br/>}
                     </div>
                     <button className={classes.button_order}>Замовити</button>
                 </div>
