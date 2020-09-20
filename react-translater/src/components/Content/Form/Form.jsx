@@ -58,7 +58,7 @@ const Form = () => {
                     <div className={classes.section_block}>
                         <h3>ЗАМОВИТИ РЕДАГУВАННЯ</h3>
                         <p>Виправимо всі помилки, приберемо всі дурниці, перефразуємо невдалі місця, але сильно текст не
-                            переписуватимемо. Зайвих виправлень не буде. <a href="#">Детальніше про редагування</a></p>
+                            переписуватимемо. Зайвих виправлень не буде. <a href="/#">Детальніше про редагування</a></p>
                         <div className={classes.input_mail}><input className={classes.input_field} type='email'
                                                                    placeholder='Ваша ел.пошта'/></div>
                         <div className={classes.input_name}><input className={classes.input_field} type='text'
