@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "df894e1552ae43497899a467f3f34b4a",
+    "revision": "16468468d59c28b0813fdc62668d7203",
     "url": "/spiritufuerte/react-traslater/index.html"
   },
   {
-    "revision": "788cf6c59b1045609216",
+    "revision": "806811b40c4db66c03d3",
     "url": "/spiritufuerte/react-traslater/static/css/main.d9858454.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/spiritufuerte/react-traslater/static/js/2.c8f9f5b8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "788cf6c59b1045609216",
-    "url": "/spiritufuerte/react-traslater/static/js/main.79797695.chunk.js"
+    "revision": "806811b40c4db66c03d3",
+    "url": "/spiritufuerte/react-traslater/static/js/main.fdc82b76.chunk.js"
   },
   {
     "revision": "4c0eb4e2d79b2936fc9d",

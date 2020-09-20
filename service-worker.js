@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/spiritufuerte/react-traslater/precache-manifest.b568d570bd0fea8f3c048f5c88f84a5d.js"
+  "/spiritufuerte/react-traslater/precache-manifest.dbde44f4c237065944d8a14d7bc4a7e8.js"
 );
 
 self.addEventListener('message', (event) => {
