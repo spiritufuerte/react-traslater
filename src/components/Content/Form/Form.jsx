@@ -2,6 +2,13 @@ import React, {useState} from "react";
 import classes from '../Form/Form.module.css';
 import moment from "moment";
 
+const {
+    chooseCoefficientSpeed,
+    calculatePrice,
+    calculateWorkDuration,
+    calculateResultDate,
+} = require('../../../calculateResultDate');
+
 
 const Form = () => {
     const [numChars, setNumChars] = useState(0);
@@ -14,42 +21,10 @@ const Form = () => {
         setLanguage(e.target.value);
     }
 
-    let price;
-    let workingHours;
-    switch (language) {
-        case 'ukr':
-        case 'rus':
-            price = Math.max(50, 0.05 * numChars);
-            workingHours = numChars / 1333;
-            break;
-        case 'ang':
-            price = Math.max(120, 0.12 * numChars);
-            workingHours = numChars / 333;
-            break;
-        default:
-            price = 0;
-            break;
-    }
-    const minutes = 30 + Math.max(1, workingHours) * 60;
-    let roundedMinutes = minutes + (minutes % 30 === 0 ? 0 : 30 - minutes % 30);
-    const date = moment();
-    let deadline;
-    while (roundedMinutes > 0) {
-        if (date.day() !== 0 && date.day() !== 6) {
-            let startTime = date.clone().hours(10).minutes(0);
-            if (moment().isAfter(startTime)) {
-                startTime = moment();
-            }
-            let endTime = date.clone().hours(19).minutes(0);
-
-            if (moment().isBefore(endTime)) {
-                deadline = startTime.add(roundedMinutes, 'minutes');
-                roundedMinutes = deadline.diff(endTime, 'minutes');
-            }
-        }
-
-        date.add(1, 'day');
-    }
+    const info = chooseCoefficientSpeed(language);
+    const durationMs = calculateWorkDuration(numChars, info.speed, '');
+    const deadline = calculateResultDate(+new Date(), durationMs);
+    const price = calculatePrice(Math.max(1000, numChars), language, info.coefficient, '');
 
     return (
         <form className={classes.form}>
@@ -74,11 +49,11 @@ const Form = () => {
                     <div className={classes.section_lang_item}>
                         <legend className={classes.section_lang_title}><b>Мова</b></legend>
                         <label><input type="radio" name="lang"
-                                      value="ukr" onChange={handleChangeLanguage}/> Українська</label>
+                                      value="uk" onChange={handleChangeLanguage}/> Українська</label>
                         <label><input type="radio" name="lang"
-                                      value="rus" onChange={handleChangeLanguage}/> Російська</label>
+                                      value="ru" onChange={handleChangeLanguage}/> Російська</label>
                         <label><input type="radio" name="lang"
-                                      value="ang" onChange={handleChangeLanguage}/> Англійська</label>
+                                      value="en" onChange={handleChangeLanguage}/> Англійська</label>
                     </div>
                 </section>
                 <section>
@@ -90,10 +65,11 @@ const Form = () => {
             <div>
                 <div className={classes.block_result_info}>
                     <div className={classes.block_info_text}>
-                        <div className={classes.price}>{numChars ?  price.toFixed(2) : '0,00'} грн</div>
+                        <div className={classes.price}>{numChars && !isNaN(price) ? price : '0.00'} грн</div>
                         {deadline &&
-                            numChars ?
-                            <div className={classes.time}>Термін виконання: {deadline.format('DD.MM.YY [о] HH:mm')}</div> : <br/>}
+                        numChars ?
+                            <div className={classes.time}>Термін
+                                виконання: {moment(deadline).format('DD.MM.YY [о] HH:mm')}</div> : <br/>}
                     </div>
                     <button className={classes.button_order}>Замовити</button>
                 </div>
