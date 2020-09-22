@@ -36,17 +36,18 @@ export function calculateResultDate(startTimeMs, durationMs) {
         if (date.day() !== 0 && date.day() !== 6) {
             let startTime = date.clone().hours(10).minutes(0);
             if (now.isAfter(startTime)) {
-                startTime = now;
+                startTime = now.clone();
             }
             let endTime = date.clone().hours(19).minutes(0);
+            const lol = now.isBefore(endTime);
 
             if (now.isBefore(endTime)) {
                 deadline = startTime.add(durationMs);
                 durationMs = deadline.diff(endTime);
             }
         }
-
         date.add(1, 'day');
     }
-    return deadline ? deadline.valueOf() : null;
+    const result = deadline ? deadline.valueOf() : null;
+    return result;
 }

@@ -70,6 +70,7 @@ describe('calculateWorkDuration', () => {
 describe('calculateResultDate', () => {
   test.each`
     startTime                        | durationHours | expectedResult
+   
     ${'23/09/2019, 10:00 Monday'}    | ${5}          | ${'23/09/2019, 15:00 Monday'}
     ${'23/09/2019, 18:00 Monday'}    | ${7}          | ${'24/09/2019, 16:00 Tuesday'}
     ${'23/09/2019, 18:00 Monday'}    | ${25}         | ${'26/09/2019, 16:00 Thursday'}
@@ -85,6 +86,7 @@ describe('calculateResultDate', () => {
     ${'27/09/2019, 17:00 Friday'}    | ${8}          | ${'30/09/2019, 16:00 Monday'}
     ${'27/09/2019, 19:00 Friday'}    | ${8}          | ${'30/09/2019, 18:00 Monday'}
     ${'28/09/2019, 10:00 Saturday'}  | ${8}          | ${'30/09/2019, 18:00 Monday'}
+   
   `(
     'calculateResultDate__table',
     ({ startTime, durationHours, expectedResult }) => {
